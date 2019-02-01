@@ -1,3 +1,8 @@
+'''
+@Author: Puzhuo Li
+@Github: https://github.com/JamesLi0217
+@Date: 2019-01-31 22:48:01
+'''
 # -*- coding: utf-8 -*-
 """
 Updated Jan 21, 2018
@@ -16,7 +21,16 @@ from Triangle import classifyTriangle
 
 class TestTriangles(unittest.TestCase):
     # define multiple sets of tests as functions with names that begin
-
+    def testInvalidInput1(self):
+        self.assertEqual(classifyTriangle(201,100,150),"InvalidInput")
+    def testInvalidInput2(self):
+        self.assertEqual(classifyTriangle(2,3,0),"InvalidInput")
+    def testInvalidInput3(self):
+        self.assertEqual(classifyTriangle(2,3,"e"),"InvalidInput")
+    def testInvalidInput4(self):
+        self.assertEqual(classifyTriangle("e",3,4),"InvalidInput")
+    def testInvalidInput5(self):
+        self.assertEqual(classifyTriangle(2.1,3,4),"InvalidInput")
     def testRightTriangleA(self): 
         self.assertEqual(classifyTriangle(3,4,5),'Right','3,4,5 is a Right triangle')
 
@@ -26,6 +40,14 @@ class TestTriangles(unittest.TestCase):
     def testEquilateralTriangles(self): 
         self.assertEqual(classifyTriangle(1,1,1),'Equilateral','1,1,1 should be equilateral')
 
+    def testScaleneTriangles(self): 
+        self.assertEqual(classifyTriangle(2,3,4),'Scalene','2,3,4 should be Scalene')
+    
+    def testIsocelesTriangles(self): 
+        self.assertEqual(classifyTriangle(2,3,2),'Isoceles','2,3,2 should be Isoceles')
+
+    def testNotATriangles(self): 
+        self.assertEqual(classifyTriangle(2,3,1),'NotATriangle','2,3,1 should be Not A Triangle')
 if __name__ == '__main__':
     print('Running unit tests')
     unittest.main()
